@@ -2,6 +2,7 @@ import argparse
 import difflib
 import subprocess
 import sys
+import os
 
 
 def main():
@@ -16,28 +17,40 @@ def main():
     args = parser.parse_args()
 
     approved_file_name = args.name + ".approved"
-    with open(approved_file_name, "r") as file:
-        approved_command = file.read()
 
-    command_result = subprocess.run(
-        [args.executor, args.command], capture_output=True, text=True).stdout
-    approved_command_result = subprocess.run(
-        [args.executor, approved_command], capture_output=True, text=True).stdout
+    approved_command = ''
+
+    if os.path.isfile(approved_file_name):
+        with open(approved_file_name, "r") as file:
+            approved_command = file.read()
 
     difference_command = difflib.ndiff([args.command], [approved_command])
+
+    print(difference_command)
+
+    if not difference_command:
+        print("=== NO DIFFERENCE FOUND. TEST PASSED ===")
+        sys.exit(0)
+        return
+
+    command_result = subprocess.run(args.executor.split(
+    ) + [args.command], capture_output=True, text=True).stdout
+
+    if approved_command:
+        approved_command_result = subprocess.run(args.executor.split(
+        ) + [approved_command], capture_output=True, text=True).stdout
+    else:
+        approved_command_result = ''
+
     difference_result = difflib.ndiff(
         command_result.splitlines(), approved_command_result.splitlines())
 
-    if difference_command or difference_result:
-        print("=== DIFFERENCE FOUND ===")
-        print("\n=== Command difference ===")
-        print('\n'.join(difference_command))
-        print("\n=== Result difference ===")
-        print('\n'.join(difference_result))
-        sys.exit(1)
-    else:
-        print("=== NO DIFFERENCE FOUND. TEST PASSED ===")
-        sys.exit(0)
+    print("=== DIFFERENCE FOUND ===")
+    print("\n=== Command difference ===")
+    print('\n'.join(difference_command))
+    print("\n=== Result difference ===")
+    print('\n'.join(difference_result))
+    sys.exit(1)
 
 
 if __name__ == "__main__":
