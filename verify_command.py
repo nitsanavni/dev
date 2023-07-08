@@ -31,14 +31,12 @@ def main():
         with open(approved_file_name, "r") as file:
             approved_command = file.read()
 
-    difference_command = difflib.ndiff([args.command], [approved_command])
-
-    print(difference_command)
-
-    if not difference_command:
+    if args.command == approved_command:
         print("=== NO DIFFERENCE FOUND. TEST PASSED ===")
         sys.exit(0)
         return
+
+    difference_command = difflib.ndiff([args.command], [approved_command])
 
     command_result = subprocess.run(args.executor.split(
     ) + [args.command], capture_output=True, text=True).stdout
