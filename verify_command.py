@@ -14,9 +14,16 @@ def main():
                         help="Command to be executed.")
     parser.add_argument('--name', type=str, required=True,
                         help="Name for the tests.")
+    parser.add_argument('--approve', action='store_true',
+                        help="Approve the command.")
     args = parser.parse_args()
 
     approved_file_name = args.name + ".approved"
+
+    if args.approve:
+        with open(approved_file_name, 'w') as file:
+            file.write(args.command)
+        sys.exit(0)
 
     approved_command = ''
 
