@@ -1,0 +1,1 @@
+python verify_command.py --executor 'python chat.py' --command 'hello!' --name 'greeting'
