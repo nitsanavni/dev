@@ -11,7 +11,7 @@ def make_prompt(file_contents, change):
 
 
 def patch(file_path, patch_content):
-    proc = subprocess.run(['patch', file_path],
+    proc = subprocess.run(['patch', '-l', file_path],
                           input=patch_content, text=True, capture_output=True)
     if proc.returncode != 0:
         raise Exception(
@@ -40,7 +40,12 @@ def main():
         file_contents = f.read()
 
     prompt_text = make_prompt(file_contents, args.change)
+
+    print(prompt_text)
+
     patch_content = chat_with_gpt4("api_key", prompt_text)
+
+    print(patch_content)
 
     print(patch(args.file, patch_content))
     print(git_diff(args.file))

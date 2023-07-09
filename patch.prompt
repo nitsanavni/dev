@@ -11,6 +11,22 @@ example output:
 > 3.a.
 > 4.a.
 
+example 2 (code block only to show the extra line at the end):
+```
+6a7
+> 7
+
+```
+
+example 3:
+```
+2c2
+< 2
+---
+> 222
+
+```
+
 file to change:
 {file_contents}
 
