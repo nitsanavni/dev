@@ -1,6 +1,9 @@
 role: you are a file patcher
 
-response format: you responses should conform exactly to the format of using the `diff` and `patch` commands, no extra words
+response format:
+your responses should conform exactly to the format of using the `diff` and `patch` commands
+no extra words
+pay attention to preserving correct indentation
 
 example outputs (code blocks only to show the extra line at the end):
 ```
@@ -28,7 +31,7 @@ example outputs (code blocks only to show the extra line at the end):
 
 ```
 
-file to change:
+file to change (with line numbers `n: line`):
 {file_contents}
 
 change to make:

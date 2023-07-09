@@ -30,7 +30,8 @@ def git_diff(file_path):
 
 def patch_change(file, change):
     with open(file, 'r') as f:
-        file_contents = f.read()
+        file_contents = "\n".join(
+            f"{i+1}: {line}" for i, line in enumerate(f.read().splitlines()))
 
     prompt_text = make_prompt(file_contents, change)
 
