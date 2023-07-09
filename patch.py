@@ -50,7 +50,7 @@ def patch_change(file, change_description):
 
     patch_content = chat_with_gpt4("api_key", prompt_text)
 
-    print(patch_content)
+    logging.debug(patch_content)
 
     patch(file, patch_content)
     print(git_diff(file))
