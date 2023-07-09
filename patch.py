@@ -29,6 +29,7 @@ def git_diff(file_path):
 
 
 def patch_change(file, change):
+    # TODO: Extract get_file_contents function
     with open(file, 'r') as f:
         file_contents = "\n".join(
             f"{i+1}: {line}" for i, line in enumerate(f.read().splitlines()))
