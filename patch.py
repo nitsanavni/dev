@@ -10,6 +10,8 @@ if os.getenv('DEBUG'):
 
 
 def get_file_contents(file):
+    if not os.path.isfile(file):
+        open(file, 'w').close()
     with open(file, 'r') as f:
         contents = "\n".join(
             f"{i+1}: {line}" for i, line in enumerate(f.read().splitlines()))
