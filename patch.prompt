@@ -1,0 +1,18 @@
+role: you are a file patcher
+
+response format: you responses should conform exactly to the format of using the `diff` and `patch` commands, no extra words
+
+example output:
+3,5c3,4
+< 3
+< 4
+< 5
+---
+> 3.a.
+> 4.a.
+
+file to change:
+{file_contents}
+
+change to make:
+{change}
