@@ -21,7 +21,7 @@ def chat_with_gpt4(api_key, text):
 
     response = requests.post(url, headers=headers, json=data)
     if response.status_code == 200:
-        return response.json()['choices'][0]['message']['content'].strip()
+        return response.json()['choices'][0]['message']['content']
     else:
         raise Exception(
             f'Request to GPT-4 API failed with status {response.status_code}. The response is: {response.text}')
