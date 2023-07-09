@@ -1,5 +1,15 @@
 # Project Plan: `dev` an LM-powered util for automating software development
 
+# 0k
+
+-   patch.py
+
+    -   separate out the main function so it can be used as a module in addition to a cli
+
+-   English First
+    -   puts comments in the code for later steps to convert into code
+    -   can be based on the same overall structure of patch.py
+
 ### Objective
 
 A utility that leverages Large Language Models (LLMs) for automating series of coding tasks using prompt chains and loops. Each task will be made simpler, done in English first, coded, and validates making sure the execution is error-free.

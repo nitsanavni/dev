@@ -41,13 +41,9 @@ def main():
 
     prompt_text = make_prompt(file_contents, args.change)
 
-    print(prompt_text)
-
     patch_content = chat_with_gpt4("api_key", prompt_text)
 
-    print(patch_content)
-
-    print(patch(args.file, patch_content))
+    patch(args.file, patch_content)
     print(git_diff(args.file))
 
 
