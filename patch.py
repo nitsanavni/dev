@@ -28,6 +28,20 @@ def git_diff(file_path):
     return proc.stdout
 
 
+def patch_change(file, change):
+    with open(file, 'r') as f:
+        file_contents = f.read()
+
+    prompt_text = make_prompt(file_contents, change)
+
+    patch_content = chat_with_gpt4("api_key", prompt_text)
+
+    print(patch_content)
+
+    patch(file, patch_content)
+    print(git_diff(file))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--file', required=True,
@@ -36,15 +50,7 @@ def main():
                         help="The change to be made.")
     args = parser.parse_args()
 
-    with open(args.file, 'r') as f:
-        file_contents = f.read()
-
-    prompt_text = make_prompt(file_contents, args.change)
-
-    patch_content = chat_with_gpt4("api_key", prompt_text)
-
-    patch(args.file, patch_content)
-    print(git_diff(args.file))
+    patch_change(args.file, args.change)
 
 
 if __name__ == "__main__":
