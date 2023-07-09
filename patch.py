@@ -4,6 +4,13 @@ import os
 from chat import chat_with_gpt4
 
 
+
+def get_file_contents(file):
+    with open(file, 'r') as f:
+        contents = "\n".join(
+            f"{i+1}: {line}" for i, line in enumerate(f.read().splitlines()))
+    return contents
+
 def make_prompt(file_contents, change):
     with open('patch.prompt', 'r') as f:
         template = f.read()
@@ -29,7 +36,8 @@ def git_diff(file_path):
 
 
 def patch_change(file, change):
-    # TODO: Extract get_file_contents function
+    file_contents = get_file_contents(file)
+
     with open(file, 'r') as f:
         file_contents = "\n".join(
             f"{i+1}: {line}" for i, line in enumerate(f.read().splitlines()))
