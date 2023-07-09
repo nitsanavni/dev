@@ -57,6 +57,8 @@ def patch_change(file, change_description):
 
 
 def main():
+    # TODO: extract a function for the argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--file', required=True,
                         help="The file to be patched.")
