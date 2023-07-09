@@ -48,9 +48,8 @@ def patch_change(file, change_description):
     """
 
     file_contents = get_file_contents(file)
-    prompt_text = make_prompt(file_contents, change_description)
+    patch_content = chat_with_gpt4("api_key", make_prompt(file_contents, change_description))
 
-    patch_content = chat_with_gpt4("api_key", prompt_text)
 
     logging.debug(patch_content)
 
