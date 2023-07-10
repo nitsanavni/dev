@@ -1,6 +1,27 @@
 # Project Plan: `dev` an LM-powered util for automating software development
 
-# 0k
+### inbox
+
+- prompts p1, p2
+  - p1 uses p2 as a tool
+
+### developer actions
+
+- run tests
+- commit
+
+### learned
+
+-   gpt4 does not understand "inline" immediately, need to design a prompt for that
+-   extract function is not easy to do in one fell swoop
+    -   design a prompt chain / loop that:
+        1. adds a todo in the code
+        2. create a new empty unused function focusing on signature
+        3. fill the impl
+        4. replace the call site
+        5. validate each step
+
+### 0k
 
 -   patch.py
 
