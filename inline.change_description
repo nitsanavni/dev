@@ -1,0 +1,21 @@
+inline the {symbol} variable
+
+note: inline means:
+1. where {symbol} is used - replace with its value
+2. rm {symbol} declaration and assignment
+
+example:
+
+inline `fizz`
+
+```
+def fizzbuzz:
+    fizz = "Fizz"
+    return fizz
+```
+
+becomes:
+```
+def fizzbuzz:
+    return "Fizz"
+```
