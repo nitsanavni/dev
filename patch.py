@@ -2,7 +2,6 @@ import argparse
 import logging
 import os
 import subprocess
-import os
 from chat import chat_with_gpt4
 
 if os.getenv('DEBUG'):

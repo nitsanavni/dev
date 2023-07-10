@@ -2,13 +2,27 @@
 
 ### inbox
 
-- prompts p1, p2
-  - p1 uses p2 as a tool
-
+-   wherever relevant - provide real feedback
+    -   static analysis
+        -   python -m py_compile fb.py
+        -   flake8
+    -   execution
+        -   python fb.py
+    -   tests
+    -   after patching a file
+        -   any errs from patch command?
+        -   validate the new file and the diff
+            -   incorrect -> revert
+            -   still commit though...
+-   prompts p1, p2
+    -   p1 uses p2 as a tool
+-   prompts/utils leave a trace
+    - git commits
+    - logs
 ### developer actions
 
-- run tests
-- commit
+-   run tests
+-   commit
 
 ### learned
 

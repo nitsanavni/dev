@@ -1,10 +1,10 @@
 inline the {symbol} variable
 
-note: inline means:
+inline means:
 1. where {symbol} is used - replace with its value
 2. rm {symbol} declaration and assignment
 
-example:
+inline example 1:
 
 inline `fizz`
 
@@ -19,3 +19,39 @@ becomes:
 def fizzbuzz:
     return "Fizz"
 ```
+
+inline example 2:
+
+```
+def fizz_buzz(n):
+    for i in range(1, n+1):
+        mod15 = i % 15
+        is_mul_of_15 = mod15 == 0
+        if is_mul_of_15 == 0:
+            print('FizzBuzz')
+        elif i % 3 == 0:
+            print('Fizz')
+        elif i % 5 == 0:
+            print('Buzz')
+        else:
+            print(i)
+```
+
+inline mod15
+
+```
+def fizz_buzz(n):
+    for i in range(1, n+1):
+        is_mul_of_15 = i % 15 == 0
+        if is_mul_of_15 == 0:
+            print('FizzBuzz')
+        elif i % 3 == 0:
+            print('Fizz')
+        elif i % 5 == 0:
+            print('Buzz')
+        else:
+            print(i)
+```
+
+important: don't break the code!
+important: pay attention to correct indentation!
