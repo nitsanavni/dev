@@ -63,6 +63,8 @@ def main():
     parser.add_argument('--change', required=True,
                         help="The change to be made.")
     args = parser.parse_args()
+    logging.debug(args.file)
+    logging.debug(args.change)
 
     patch_change(args.file, args.change)
 
